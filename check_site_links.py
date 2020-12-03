@@ -2,7 +2,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-test_site = 'https://iaqf.org/'
 
 def get_site_links_with_titles(url):
     site = requests.get(url).text
@@ -45,6 +44,7 @@ def main(url):
             print(broke_link)
     else:
         print("Didn't find any broken links")   
+
 
 if __name__ == '__main__':
     site = input('Website to check: ')
