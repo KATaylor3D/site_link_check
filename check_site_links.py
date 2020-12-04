@@ -29,7 +29,6 @@ def is_link_in_site(url, site):
 
 def main(url):
     links, titles = get_site_links_with_titles(url)
-    os.system('cls')
     broken_links = []
     for link, title in zip(links, titles):
         fixed_link = fix_link_syntax(link, url)
@@ -47,5 +46,6 @@ def main(url):
 
 
 if __name__ == '__main__':
+    os.system('cls')
     site = input('Website to check: ')
     main(site)
