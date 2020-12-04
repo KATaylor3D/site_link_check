@@ -7,3 +7,7 @@ Used to check if all the links in a given website return a 200 code
 * The command prompt will clear and then ask 'Website to check: '
 * From here enter your website url including the 'https://'
 * Then it will return either a list of broken link titles or a response saying 'Didn't find any broken links'
+## Background
+*My fiance's job gave her a task to check if all the links in one of their clients websites was working. So I said, "You know I could do that in like 40 lines of code". And here we are with 50 lines of code...
+<br/>
+__fml__*
