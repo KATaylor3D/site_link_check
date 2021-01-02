@@ -79,8 +79,7 @@ def list_to_examine(url_tup):
         comp.append(url)
     return comp
 
-
-def search_site_for_links_status(site):
+def search_site_for_links_statuses(site):
     original_link = build_starting_tuple(site)
     visited_links = set()
     all_links = set()
@@ -108,13 +107,9 @@ def search_site_for_links_status(site):
                         print(f"    Added {full_link} to all_links")
                     else:
                         print(f"    Skipped {link} to all_links")
-    print('Saving to file')
-    with open('log.txt', 'w') as file:
-        for link in visited_links:
-            file.write(str(link) + '\n')
-    print('Complete')
+    return visited_links
 
-def get_url_tups_from_file(filename):
+def get_report_from_file(filename):
     url_tups = set()
     with open(filename, 'r') as file:
         content = file.read()
@@ -146,23 +141,38 @@ def get_broken_links(url_tups):
             broken_links.add(url_tup)
     return broken_links
 
-def interface():
-    search = input('Website to check: ')
+def create_filename_from_url(url):
+    if "www." in url:
+        filename = url.split("www.")[1]
+        filename = filename.split('/')[0] + '.txt'
+    else:
+        filename = url.split("://")[1]
+        filename = filename.split('/')[0] + '.txt'
+    return filename
 
-def save_report(url_tups):
+def save_report(site, url_tups):
+    filename = create_filename_from_url(site)
     problem_links = get_problem_links(url_tups)
     broken_links = get_broken_links(url_tups)
-    with open('report.txt', 'w') as file:
+    with open(filename, 'w') as file:
         for link in broken_links:
             file.write(str(link) + '\n')
         for link in problem_links:
             file.write(str(link) + '\n')
         file.write(f"There are {len(broken_links)} broken links and {len(problem_links)} problem links")
 
+def main():
+    os.system('cls')
+    site = input('Website to check: ')
+    filename = create_filename_from_url(site)
+    if os.path.exists(filename):
+        report = get_report_from_file(filename)
+    else:
+        link_statuses = search_site_for_links_statuses(site)
+        save_report(site, link_statuses)
+        report = link_statuses
+    for line in report:
+        print(line)
+
 if __name__ == '__main__':
-    # os.system('cls')
-    # site = 'https://iaqf.org/'
-    # # input('Website to check: ')
-    # main(site)
-    url_tups = get_url_tups_from_file('relog.txt')
-    save_report(url_tups)
+   main()
