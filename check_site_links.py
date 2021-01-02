@@ -171,8 +171,11 @@ def main():
         link_statuses = search_site_for_links_statuses(site)
         save_report(site, link_statuses)
         report = link_statuses
-    for line in report:
-        print(line)
+    if report:
+        for line in report:
+            print(line)
+    else:
+        print("Didn't find any problem links")
 
 if __name__ == '__main__':
    main()
