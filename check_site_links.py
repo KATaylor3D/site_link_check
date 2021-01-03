@@ -2,6 +2,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
+import webbrowser
 
 sleep_time = 3
 
@@ -161,6 +162,20 @@ def save_report(site, url_tups):
             file.write(str(link) + '\n')
         file.write(f"There are {len(broken_links)} broken links and {len(problem_links)} problem links")
 
+def logic(url):
+    site = url
+    filename = create_filename_from_url(site)
+    if os.path.exists(filename):
+        report = get_report_from_file(filename)
+    else:
+        link_statuses = search_site_for_links_statuses(site)
+        save_report(site, link_statuses)
+        report = link_statuses
+    if report:
+        return report
+    else:
+        return "Didn't find any problem links"
+
 def main():
     os.system('cls')
     site = input('Website to check: ')
@@ -178,4 +193,4 @@ def main():
         print("Didn't find any problem links")
 
 if __name__ == '__main__':
-   main()
+   print('Call main() to run command line interface')
