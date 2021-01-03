@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from time import sleep
 
-sleep_time = 3
+sleep_time = 10
 
 def build_starting_tuple(url):
     url = url
@@ -25,10 +25,10 @@ def get_links_parents_and_texts(url_tup):
         return url_tup
     except requests.InvalidHeader as err:
         print(err)
-        print('Invalid Header. Failed to get_links_with_parent for url: {url} child of {parent}')
+        print(f'Invalid Header. Failed to get_links_with_parent for url: {url} child of {parent}')
     except requests.RequestException as err:
         print(err)
-        print('Failed to get_links_with_parent for url: {url} child of {parent}')
+        print(f'Failed to get_links_with_parent for url: {url} child of {parent}')
         return (url, parent, text)
 
 def mend_links(url_tup, site):
@@ -55,7 +55,7 @@ def add_status_code(url_tup):
             status_code = requests.get(url).status_code
             if status_code == 429:
                 print('Too many requests in an amount of time')
-                print('Waiting {sleep_time} second(s) and will try again')
+                print(f'Waiting {sleep_time} second(s) and will try again')
                 sleep(sleep_time)
                 continue
             elif status_code == 200:
