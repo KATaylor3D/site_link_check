@@ -2,7 +2,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
-import webbrowser
 
 sleep_time = 3
 
@@ -194,3 +193,4 @@ def main():
 
 if __name__ == '__main__':
    print('Call main() to run command line interface')
+   print('Run interface.py for gui tool')
