@@ -2,7 +2,7 @@ from tkinter import *
 
 window = Tk()
 window.title('Site_Link_Check')
-window.iconbitmap('C:\\Users\\KATay\\Documents\\Github\\site_link_check\\img\\broken_link.ico')
+window.iconbitmap('obviously your own path to the .ico file')
 
 header = Label(text = 'Site_Link_Check Tool', width = 80)
 scrollbar = Scrollbar(window)
