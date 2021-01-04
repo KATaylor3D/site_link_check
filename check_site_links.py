@@ -15,7 +15,7 @@ def build_starting_tuple(url):
 def get_links_parents_and_texts(url_tup):
     url, parent, text, status_code  = url_tup
     try:
-        site = requests.get(url, timeout=10).text
+        site = requests.get(url, timeout=3).text
         soup = BeautifulSoup(site, 'lxml')
         url_tup = set()
         for a_tag in soup.findAll("a"):
@@ -26,6 +26,7 @@ def get_links_parents_and_texts(url_tup):
     except requests.InvalidHeader as err:
         print(err)
         print(f'Invalid Header. Failed to get_links_with_parent for url: {url} child of {parent}')
+        return (url, parent, text)
     except requests.RequestException as err:
         print(err)
         print(f'Failed to get_links_with_parent for url: {url} child of {parent}')
@@ -101,7 +102,7 @@ def search_site_for_links_statuses(site):
                 links = get_links_parents_and_texts(url)
                 links = mend_links(links, site)
                 for link in links:
-                    if link[0] not in list_to_examine(visited_links):
+                    if link[0] not in list_to_examine(visited_links) and link[0] not in list_to_examine(all_links):
                         full_link = add_status_code(link)
                         all_links.add(full_link)
                         print(f"    Added {full_link} to all_links")
