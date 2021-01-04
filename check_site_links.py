@@ -168,7 +168,7 @@ def logic(url):
     if os.path.exists(filename):
         report = get_report_from_file(filename)
     else:
-        link_statuses = search_site_for_links_statuses(site)
+        link_statuses = search_site_for_links_statuses(site)       
         save_report(site, link_statuses)
         report = link_statuses
     if report:

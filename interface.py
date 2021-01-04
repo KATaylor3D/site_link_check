@@ -28,9 +28,15 @@ def scan():
         url_tups = csl.logic(url)
         problem_links = csl.get_problem_links(url_tups)
         broken_links = csl.get_broken_links(url_tups)
-        for tup in url_tups:
-            link, parent, text, status_code = tup
+        for link in broken_links:
+            link, parent, text, status_code = link
             info_listbox.insert(END, f'Broken link : {link}')
+            info_listbox.insert(END, f'    Parent : {parent}')
+            info_listbox.insert(END, f'    Link name : {text}')
+            info_listbox.insert(END, f'    Status code : {status_code}')
+        for link in problem_links:
+            link, parent, text, status_code = link
+            info_listbox.insert(END, f'Problem link : {link}')
             info_listbox.insert(END, f'    Parent : {parent}')
             info_listbox.insert(END, f'    Link name : {text}')
             info_listbox.insert(END, f'    Status code : {status_code}')
@@ -41,7 +47,7 @@ def scan():
 def rescan():
     url = website_entry.get()
     if url:
-        filename = create_filename_from_url(url)
+        filename = csl.create_filename_from_url(url)
         os.remove(filename)
     else:
         try:
@@ -49,9 +55,18 @@ def rescan():
             url_tups = csl.logic(url)
             problem_links = csl.get_problem_links(url_tups)
             broken_links = csl.get_broken_links(url_tups)
-            for tup in url_tups:
-                link, parent, text, status_code = tup
-                info_listbox.insert(END, create_info_listbox_response(link, parent, text, status_code))
+            for link in broken_links:
+                link, parent, text, status_code = link
+                info_listbox.insert(END, f'Broken link : {link}')
+                info_listbox.insert(END, f'    Parent : {parent}')
+                info_listbox.insert(END, f'    Link name : {text}')
+                info_listbox.insert(END, f'    Status code : {status_code}')
+            for link in problem_links:
+                link, parent, text, status_code = link
+                info_listbox.insert(END, f'Problem link : {link}')
+                info_listbox.insert(END, f'    Parent : {parent}')
+                info_listbox.insert(END, f'    Link name : {text}')
+                info_listbox.insert(END, f'    Status code : {status_code}')
             info.set(f'There are {len(broken_links)} broken links and {len(problem_links)} problem links')
         except:
             info.set('Invalid entry try again')
