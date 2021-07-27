@@ -17,7 +17,7 @@ Used to check if all the links in a given website return an error code
 ## Background
 *My fiance's job gave her a task to check if all the links in one of their clients websites was working. So I said, "You know I could do that in like 40 lines of code". And here we are with 50 lines of code...
 <br/>
-__fml__*
+__lol__*
 # Update
 Enjoying the side project more than I thought so I decided to add some more __QoL__ code. Definitly not going to hit that 50 lines mark
 * Interface GUI
