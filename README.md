@@ -1,7 +1,7 @@
 # site_link_check
 Used to check if all the links in a given website return an error code
 ## WARNING
-* Will not work on a site that doesn't support RESTful api
+* Will not work on a site that doesn't support requests
 * You'll know the site doesn't if it returns nothing and says "Invalid entry try again"
 # <p><img src="./img/NoRESTfulAPIExample.jpg" width="550"></p>
 ### Directions
