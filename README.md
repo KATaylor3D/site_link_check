@@ -19,5 +19,5 @@ Used to check if all the links in a given website return an error code
 <br/>
 __lol__*
 # Update
-Enjoying the side project more than I thought so I decided to add some more __QoL__ code. Definitly not going to hit that 50 lines mark
+Enjoying the side project more than I thought so I decided to add some more __QoL__ code. Definitly not going to hit that 40 lines mark
 * Interface GUI
