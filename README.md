@@ -15,7 +15,7 @@ Used to check if all the links in a given website return an error code
 * This scan may cause the window to say it's 'Not Responding'. Just wait. The terminal should be running the scan.
 * Once the info displays, click the links and press the visit button to open the urls in the default browser
 ## Background
-*My fiance's job gave her a task to check if all the links in one of their clients websites was working. So I said, "You know I could do that in like 40 lines of code". And here we are with 50 lines of code...
+*My fiance's job gave her a task to check if all the links in one of their clients websites was working. So I said, "You know I could do that in like 40 lines of code". And here we are with 300 lines of code...
 <br/>
 __lol__*
 # Update
